@@ -1,0 +1,133 @@
+#
+# AV Mapfile: Template
+#
+
+MAP
+ IMAGETYPE	PNG
+ EXTENT		{$sdextent}
+ SIZE		1000 800
+ IMAGECOLOR	255 255 255
+ FONTSET	"./fonts.list"
+
+ SCALEBAR
+	TRANSPARENT	OFF
+	ALIGN		CENTER
+	POSITION	LR
+	STATUS		EMBED
+	STYLE		1
+ END
+
+ LAYER
+	NAME		"states"
+	STATUS		DEFAULT
+	TYPE		POLYGON
+	CONNECTIONTYPE	postgis
+	CONNECTION	"user=avmaps password=carto dbname=avdt host=10.1.1.20 port=5432"
+	DATA		"geom from ( select gid,state_name,state_abbr,st_transform(the_geom,96954) as geom from maps.states )
+			as subquery using unique gid using srid=96954"
+	CLASS
+		NAME		"US States"
+		STYLE
+			COLOR		255 255 255
+			OUTLINECOLOR	32 32 32
+			WIDTH		2.0
+		END
+	END
+ END
+ 
+ LAYER
+	NAME		"cities"
+	STATUS		DEFAULT
+	TYPE		POLYGON
+	CONNECTIONTYPE	postgis
+	CONNECTION	"user=avmaps password=carto dbname=avdt host=10.1.1.20 port=5432"
+	DATA		"geom from ( select u.gid,st_transform(u.the_geom,96954) as geom,split_part(u.name10,',',1) as city 
+			from maps.uac u where uatyp10='U' ) as subquery using unique gid using srid=96954"
+	LABELITEM	"city"
+	CLASS
+		NAME		"Major Cities"
+		STYLE
+			COLOR 		200 200 200
+			OUTLINECOLOR	32 32 32
+		END
+		LABEL
+			COLOR		0 0 0
+			TYPE		TRUETYPE
+			FONT		liberationsans
+			SIZE		24
+			ANTIALIAS	TRUE
+			POSITION	AUTO
+			PARTIALS	FALSE
+			MINDISTANCE	300
+			BUFFER		4
+		END
+	END
+ END
+
+ LAYER
+	NAME		"SD"
+	STATUS		OFF
+	TYPE		POLYGON
+	CONNECTIONTYPE	postgis
+	CONNECTION	"user=avmaps password=carto dbname=avdt host=10.1.1.20 port=5432"
+ 	DATA		"geom from ( select gid,sldust as district,namelsad as name,st_transform(geom,96954) as geom FROM maps.{$chamber} c
+			JOIN maps.fips f ON lpad(c.statefp,2,'0')=lpad(f.fips,2,'0')
+			WHERE f.state='{$state}' AND c.sldust NOT IN ('ZZZ')) as subquery using unique gid using srid=96954"
+	LABELITEM	"district"
+	CLASS
+		NAME		"Selected"
+		EXPRESSION	( "[district]" eq "{$district}" )
+		TEXT		"[name]"
+		STYLE
+			COLOR 		0 62 126
+			OUTLINECOLOR	0 62 126
+			OPACITY		50
+		END
+		LABEL
+			COLOR		0 0 0
+			TYPE		TRUETYPE
+			FONT		liberationsans
+			SIZE		24
+			ANTIALIAS	TRUE
+			POSITION	AUTO
+			PARTIALS	TRUE
+			BUFFER		4
+			MINFEATURESIZE	AUTO
+		END
+	END
+ END
+
+ LAYER
+	NAME		"HD"
+	STATUS		OFF
+	TYPE		POLYGON
+	CONNECTIONTYPE	postgis
+	CONNECTION	"user=avmaps password=carto dbname=avdt host=10.1.1.20 port=5432"
+ 	DATA		"geom from ( select gid,{$hddistrict} as district,namelsad as name,st_transform(geom,96954) as geom FROM maps.{$chamber} c
+			JOIN maps.fips f ON lpad(c.statefp,2,'0')=lpad(f.fips,2,'0')
+			WHERE f.state='{$state}' AND c.sldlst NOT IN ('ZZZ')) as subquery using unique gid using srid=96954"
+	LABELITEM	"district"
+	CLASS
+		NAME		"Selected"
+		EXPRESSION	( "[district]" eq "{$district}" )
+		TEXT		"[name]"
+		STYLE
+			COLOR 		0 62 126
+			OUTLINECOLOR	0 62 126
+			OPACITY		50
+		END
+		LABEL
+			COLOR		0 0 0
+			TYPE		TRUETYPE
+			FONT		liberationsans
+			SIZE		24
+			ANTIALIAS	TRUE
+			POSITION	AUTO
+			PARTIALS	TRUE
+			BUFFER		4
+			MINFEATURESIZE	AUTO
+			PRIORITY	10
+		END
+	END
+ END
+END

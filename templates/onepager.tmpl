@@ -1,0 +1,144 @@
+% America Votes Onepager
+\documentclass{article}
+\usepackage{textcomp}
+\usepackage{seqsplit}
+\usepackage{setspace}
+\usepackage[cm]{fullpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{nopageno}
+\DeclareGraphicsExtensions{.png}
+\graphicspath{ {/data/scripts/onepagers/images/} }
+\begin{document}
+\pagestyle{empty}
+
+\begin{figure}[ht]
+ \centering
+ \begin{minipage}[t]{0.33\textwidth}
+   \vspace{0pt}
+   \centering
+   \includegraphics[width=\textwidth,keepaspectratio]{AV_blueNObar}\\
+   \begin{doublespace}
+    {\LARGE [% statename %] [% distname %] } 
+   \end{doublespace} 
+   \raggedright
+   {\textbf Incumbent:} [% first_name %] [% last_name %] ([% party %]) \\
+   {\textbf Committee Assignments:} [% committees %]\\
+   {\textbf Office:} [% address %] \\
+   {\textbf Phone:} [% phone %] \\
+   {\textbf E-Mail:} [% email %] \\
+   {\textbf Twitter:} [% twitter %] \\
+  \end{minipage}
+  \begin{minipage}[t]{0.66\textwidth}
+   \vspace{0pt}
+   \centering
+   \includegraphics[width=\textwidth,keepaspectratio]{[% state %]-[% chamber %]-[% district %]}\\
+   \raggedright
+   \emph{Notes:} [% notes %]
+  \end{minipage}
+\end{figure}
+
+\hrule
+
+\begin{center}
+\begin{multicols*}{3}
+
+{\Large Gender} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  Men & [% gender_m %] ([% pct_gender_m %]\%)\\ \hline
+  Women & [% gender_f %] ([% pct_gender_f %]\%) \\ \hline
+\end{tabularx} \\
+\vspace{5 mm}
+
+{\Large Race} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  Caucasian & [% race_c %] ([% pct_race_c %]\%)\\ \hline
+  Black & [% race_b %] ([% pct_race_b %]\%)\\ \hline
+  Asian & [% race_a %] ([% pct_race_a %]\%)\\ \hline
+  Hispanic & [% race_h %] ([% pct_race_h %]\%)\\ \hline
+  Other & [% race_o %] ([% pct_race_o %]\%)\\ \hline
+\end{tabularx} \\
+\vspace{5 mm}
+
+{\Large Age} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  18-30 & [% age_18_30 %] ([% pct_age_18_30 %]\%)\\ \hline
+  31-40 & [% age_31_40 %] ([% pct_age_31_40 %]\%)\\ \hline
+  41-50 & [% age_41_50 %] ([% pct_age_41_50 %]\%)\\ \hline
+  51-65 & [% age_51_65 %] ([% pct_age_51_65 %]\%)\\ \hline
+  66+ & [% age_66_up %] ([% pct_age_66_up %]\%)\\ \hline
+\end{tabularx} \\
+\vspace{5 mm}
+
+{\Large Party Registration} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  Democrat & [% party_d %] ([% pct_party_d %]\%) \\ \hline
+  Republican & [% party_r %] ([% pct_party_r %]\%) \\ \hline
+  Other & [% party_o %] ([% pct_party_o %]\%) \\ \hline
+\end{tabularx} \\
+
+\vfill
+
+\columnbreak
+
+{\Large Turnout} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  Overall Turnout & [% turnout %]\\ \hline
+  AVEV Turnout & [% avev %]\\ \hline
+\end{tabularx} \\
+\vspace{5mm}
+
+{\Large NCEC} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  Expected Vote & [% expvote %]\\ \hline
+  Vote Goal & [% votegoal %]\\ \hline
+  Vote Deficit & [% votedeficit %]\\ \hline
+  Dem Perf. \% & [% demperfpct %]\\ \hline
+\end{tabularx}
+\vspace{5mm}
+
+{\Large Partisan Score Distribution} \\
+\includegraphics[width=\linewidth,keepaspectratio]{partgraph/[% state %]_[% chamber %]_[% district %]}\\
+
+\vfill
+
+\columnbreak
+
+{\Large AV 2012 Contacts} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  \uppercase{[% chamber %]} [% district %] & [% contacts_district %] \\ \hline
+  Total & [% contacts_total %] \\ \hline
+\end{tabularx} \\
+\vspace{5 mm}
+
+{\Large Previous Elections} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  Obama '12 & [% pres12margin %] \\ \hline
+  Obama '08 & [% pres08margin %] \\ \hline
+  Gov '10 & [% govmargin %] \\ \hline
+  \uppercase{[% chamber %]} '10 & - \\ \hline
+\end{tabularx}
+
+\vfill
+
+\end{multicols*}
+\end{center}
+\end{document}

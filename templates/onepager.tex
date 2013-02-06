@@ -1,0 +1,143 @@
+% America Votes Onepager
+\documentclass{article}
+\usepackage{textcomp}
+\usepackage{seqsplit}
+\usepackage{setspace}
+\usepackage[cm]{fullpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{nopageno}
+\DeclareGraphicsExtensions{.png}
+\graphicspath{ {/data/scripts/onepagers/images/} }
+\begin{document}
+\pagestyle{empty}
+
+\begin{figure}[ht]
+ \centering
+ \begin{minipage}[t]{0.33\textwidth}
+   \vspace{0pt}
+   \centering
+   \includegraphics[width=\textwidth,keepaspectratio]{AV_blueNObar}\\
+   \begin{doublespace}
+    {\LARGE New Hampshire State House District Strafford County No. 24 (F) } 
+   \end{doublespace} 
+   \raggedright
+   {\textbf Incumbent:}   () \\
+   {\textbf Committee Assignments:} \\
+   {\textbf Office:}  \\
+   {\textbf Phone:}  \\
+   {\textbf E-Mail:}  \\
+   {\textbf Twitter:}  \\
+  \end{minipage}
+  \begin{minipage}[t]{0.66\textwidth}
+   \vspace{0pt}
+   \centering
+   \includegraphics[width=\textwidth,keepaspectratio]{NH-HD-STR24}\\
+   \raggedright
+   \emph{Notes:}   \end{minipage}
+\end{figure}
+
+\hrule
+
+\begin{center}
+\begin{multicols*}{3}
+
+{\Large Gender} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  Men & 5,650 (38.3\%)\\ \hline
+  Women & 3,502 (61.7\%) \\ \hline
+\end{tabularx} \\
+\vspace{5 mm}
+
+{\Large Race} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  Caucasian & 9,030 (98.3\%)\\ \hline
+  Black & 83 (0.9\%)\\ \hline
+  Asian & 8 (0.1\%)\\ \hline
+  Hispanic & 24 (0.3\%)\\ \hline
+  Other & 38 (0.4\%)\\ \hline
+\end{tabularx} \\
+\vspace{5 mm}
+
+{\Large Age} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  18-30 & 138 (1.7\%)\\ \hline
+  31-40 & 438 (5.5\%)\\ \hline
+  41-50 & 1,440 (18.0\%)\\ \hline
+  51-65 & 2,908 (36.3\%)\\ \hline
+  66+ & 3,085 (38.5\%)\\ \hline
+\end{tabularx} \\
+\vspace{5 mm}
+
+{\Large Party Registration} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  Democrat & 2,925 (31.9\%) \\ \hline
+  Republican & 1,310 (14.3\%) \\ \hline
+  Other & 4,948 (53.9\%) \\ \hline
+\end{tabularx} \\
+
+\vfill
+
+\columnbreak
+
+{\Large Turnout} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  Overall Turnout & No data\\ \hline
+  AVEV Turnout & No data\\ \hline
+\end{tabularx} \\
+\vspace{5mm}
+
+{\Large NCEC} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  Expected Vote & \\ \hline
+  Vote Goal & 0\\ \hline
+  Vote Deficit & 0\\ \hline
+  Dem Perf. \% & \\ \hline
+\end{tabularx}
+\vspace{5mm}
+
+{\Large Partisan Score Distribution} \\
+\includegraphics[width=\linewidth,keepaspectratio]{partgraph/NH_HD_STR24}\\
+
+\vfill
+
+\columnbreak
+
+{\Large AV 2012 Contacts} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  \uppercase{HD} STR24 & 10 \\ \hline
+  Total & 9,183 \\ \hline
+\end{tabularx} \\
+\vspace{5 mm}
+
+{\Large Previous Elections} \\
+\vspace{5pt}
+\begin{tabularx}{\columnwidth}{ | >{\raggedright\arraybackslash}X | >{\centering\arraybackslash}X | }
+ \hline
+  Obama '12 & - \\ \hline
+  Obama '08 &  \\ \hline
+  Gov '10 &  \\ \hline
+  \uppercase{HD} '10 & - \\ \hline
+\end{tabularx}
+
+\vfill
+
+\end{multicols*}
+\end{center}
+\end{document}
